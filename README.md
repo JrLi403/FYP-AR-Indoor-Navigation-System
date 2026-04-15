@@ -1,115 +1,201 @@
 # Indoor AR Navigation System (iOS)
 
-## 📌 Overview | 项目简介
-
-This project implements a **smartphone-based indoor navigation system** using AR and motion sensing, designed for structured indoor environments such as university buildings.
-
-本项目实现了一个基于智能手机的**室内导航系统**，结合增强现实（AR）与运动传感，主要面向如大学教学楼等结构化室内环境。
-
-Unlike traditional indoor navigation systems that rely on infrastructure (e.g., Bluetooth beacons or Wi-Fi fingerprinting), this system adopts a **trace-based approach**, allowing routes to be recorded once and reused for navigation.
-
-与依赖蓝牙信标或 Wi-Fi 指纹的传统室内导航不同，本系统采用**轨迹复用（trace-based）方法**，通过一次路线录制即可反复用于导航。
+[English](#english) | [中文](#中文)
 
 ---
 
-## 🎬 Demo Video | 演示视频
+## English
 
-Watch the system demo here:  
-https://fyp-indoor-navigation.blogspot.com/2026/03/video.html
+### Overview
+This project implements a **smartphone-based indoor navigation system** using Augmented Reality (AR) and motion sensing. It is designed for structured indoor environments such as university buildings, where traditional GPS-based navigation fails.
 
-点击观看系统演示视频：  
+Unlike infrastructure-based solutions (e.g., Bluetooth beacons or Wi-Fi fingerprinting), this system adopts a **trace-based navigation approach**, where routes are recorded once and reused for future navigation.
+
+---
+
+### Demo Video
 https://fyp-indoor-navigation.blogspot.com/2026/03/video.html
 
 ---
 
-## 🧩 System Architecture | 系统架构
+### System Architecture
 
-The project consists of **two independent iOS applications**:
+The system consists of two independent iOS applications:
 
-本项目由**两个独立的 iOS 应用组成**：
+#### 1. AR Navigation App
+- End-user navigation interface
+- QR code-based starting point initialization
+- AR-based visual navigation guidance
+- Real-time motion tracking using sensors
 
-### 1. AR Navigation App
-- End-user navigation interface  
-- QR code-based initialization  
-- AR-based visual guidance  
-- Real-time motion tracking  
-
-用户导航端，包含：
-- 二维码初始化定位  
-- AR 实时导航指引  
-- 运动传感路径重建  
-
----
-
-### 2. Route Recording & Database App
-- Admin-only interface  
-- Route recording using sensors  
-- Upload data to Firestore  
-- Manage nodes and room mapping  
-
-管理员端，包含：
-- 路径录制（基于传感器）  
-- 上传数据至 Firebase Firestore  
-- 节点与房间信息管理  
+#### 2. Route Recording & Database App
+- Admin-only application
+- Route recording using motion sensors
+- Upload route data to Firebase Firestore
+- Manage nodes and room mappings
 
 ---
 
-## ⚙️ Key Features | 核心功能
-
-- Smartphone-based navigation (no external hardware)  
-- Motion-based trajectory reconstruction  
-- Node-based indoor graph representation  
-- Reusable recorded routes  
-- Cloud-based data storage (Firebase Firestore)  
-- Role-based access (Admin vs User)  
-- QR code initialization  
-- AR visual guidance  
-
----
-
-## 🏗️ Project Structure | 项目结构
-
-/AR-Navigation-App  
-/Record-Route-Database-App  
+### Key Features
+- No external infrastructure required
+- Motion-based trajectory reconstruction
+- Graph-based indoor navigation model
+- Reusable recorded routes
+- Firebase cloud database integration
+- Role-based access control (Admin/User)
+- QR code initialization
+- AR visual guidance
 
 ---
 
-## 🚀 Setup Instructions | 运行说明
+### Technical Highlights
 
-### Requirements
-- Xcode
+- **CoreMotion**: Used for yaw estimation and step detection  
+- **ARKit**: Provides real-time spatial tracking and visual guidance  
+- **Firebase Firestore**: Stores routes, nodes, and room data  
+- **Graph Model**: Indoor space represented as nodes and edges  
+
+---
+
+### Project Structure
+
+```
+/AR-Navigation-App
+    /App
+    /Views
+    /Navigation
+    /Models
+    /Firestore
+
+/Record-Route-Database-App
+    /App
+    /Views
+    /Recording
+    /Database
+```
+
+---
+
+### Setup Instructions
+
+#### Requirements
+- Xcode (latest version recommended)
 - iOS device (ARKit supported)
 - Firebase account
 
-### Steps
-
+#### Steps
 1. Clone the repository  
-2. Open project in Xcode  
+2. Open the project in Xcode  
 3. Add your own `GoogleService-Info.plist`  
-4. Enable permissions (Camera, Motion, ARKit)  
-5. Run on real device  
+4. Enable required permissions:
+   - Camera
+   - Motion
+   - ARKit
+5. Run the app on a real device  
 
 ---
 
-## ⚠️ Important Notes | 注意事项
-
-- `GoogleService-Info.plist` is NOT included  
-- Must be configured manually  
-- Ensure correct target membership  
-
----
-
-## 🔮 Future Work | 后续工作
-
-- Improve motion accuracy (drift reduction)  
-- Cross-platform support  
-- Multi-floor navigation  
-- Automated node generation  
+### Notes
+- `GoogleService-Info.plist` is NOT included
+- Must be configured separately
+- Ensure correct target membership in Xcode
 
 ---
 
-## 📄 License | 许可
+### Future Work
+- Improve motion accuracy and reduce drift
+- Support multi-floor navigation
+- Cross-platform expansion (Android / Web)
+- Automated node generation
 
-This project is for academic use only.
+---
 
-本项目仅用于学术用途。
+## 中文
+
+### 项目简介
+本项目实现了一个基于**智能手机的室内导航系统**，结合增强现实（AR）与运动传感技术，适用于大学教学楼等结构化室内环境。
+
+与依赖蓝牙信标或 Wi-Fi 指纹的传统方案不同，本系统采用**轨迹复用（trace-based）方法**，即路线录制一次后即可重复用于导航。
+
+---
+
+### 演示视频
+https://fyp-indoor-navigation.blogspot.com/2026/03/video.html
+
+---
+
+### 系统架构
+
+系统由两个独立的 iOS 应用组成：
+
+#### 1. AR Navigation App（导航端）
+- 面向用户的导航界面  
+- 二维码初始化起点  
+- AR 可视化导航引导  
+- 实时运动跟踪  
+
+#### 2. Route Recording & Database App（管理端）
+- 仅管理员使用  
+- 基于传感器的路径录制  
+- 上传数据到 Firebase Firestore  
+- 管理节点与房间信息  
+
+---
+
+### 核心功能
+- 无需额外基础设施  
+- 基于运动的轨迹重建  
+- 基于图结构的室内导航模型  
+- 路径可复用  
+- Firebase 云数据库支持  
+- 权限管理（管理员/用户）  
+- 二维码初始化  
+- AR 导航指引  
+
+---
+
+### 技术要点
+- **CoreMotion**：航向角与步态检测  
+- **ARKit**：空间定位与 AR 引导  
+- **Firebase Firestore**：数据存储  
+- **图模型**：节点与路径连接  
+
+---
+
+### 项目结构
+
+```
+/AR-Navigation-App
+/Record-Route-Database-App
+```
+
+---
+
+### 运行说明
+
+#### 环境要求
+- Xcode
+- 支持 ARKit 的 iOS 设备
+- Firebase 账号
+
+#### 步骤
+1. 克隆仓库  
+2. 使用 Xcode 打开项目  
+3. 添加 `GoogleService-Info.plist`  
+4. 开启相机 / 运动 / AR 权限  
+5. 在真机运行  
+
+---
+
+### 注意事项
+- 不包含 Firebase 配置文件  
+- 需自行配置  
+- 注意 target 绑定  
+
+---
+
+### 后续工作
+- 提升精度与减少漂移  
+- 支持跨楼层导航  
+- 扩展 Android / Web  
+- 自动生成节点  
