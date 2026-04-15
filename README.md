@@ -59,20 +59,29 @@ The system consists of two independent iOS applications:
 
 ### Project Structure
 
+
 ```
 /AR-Navigation-App
-    /App
-    /Views
-    /Navigation
-    /Models
-    /Firestore
-
-/Record-Route-Database-App
-    /App
-    /Views
-    /Recording
-    /Database
+├── App             # Application entry point and lifecycle
+├── Auth            # User authentication and role management
+├── Views           # User interface (SwiftUI)
+├── Navigation      # Navigation logic and path computation
+├── Models          # Data models
+├── Firestore       # Cloud database interaction
+├── LiveActivity    # Live Activity (real-time navigation status)
+├── Scanning        # QR code scanning and initialization
 ```
+
+### Route Recording & Database App (Admin Application)
+
+```
+/Record-Route-Database-App
+├── App             # Application entry point
+├── Views           # User interface
+├── Recording       # Route recording logic
+├── Database        # Data management and upload
+```
+
 
 ---
 
@@ -164,10 +173,21 @@ https://fyp-indoor-navigation.blogspot.com/2026/03/video.html
 
 ### 项目结构
 
-```
-/AR-Navigation-App
-/Record-Route-Database-App
-```
+- **AR Navigation App（用户端）**
+  - App：应用入口  
+  - Auth：用户认证与权限管理  
+  - Views：界面层  
+  - Navigation：导航逻辑  
+  - Models：数据模型  
+  - Firestore：云端数据交互  
+  - LiveActivity：实时导航状态  
+  - Scanning：二维码扫描初始化  
+
+- **Route Recording App（管理端）**
+  - App：应用入口  
+  - Views：界面  
+  - Recording：路径录制  
+  - Database：数据管理  
 
 ---
 
