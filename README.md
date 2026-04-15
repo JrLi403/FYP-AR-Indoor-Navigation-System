@@ -1,32 +1,115 @@
-# Refactored source layout
+# Indoor AR Navigation System (iOS)
 
-This package separates the code into two app folders so it is easier to upload to GitHub and assign files to different Xcode targets.
+## 📌 Overview | 项目简介
 
-## Apps
+This project implements a **smartphone-based indoor navigation system** using AR and motion sensing, designed for structured indoor environments such as university buildings.
 
-- `AR-Navigation-App/` → end-user navigation app
-- `Record-Route-Database-App/` → manager recording + database app
+本项目实现了一个基于智能手机的**室内导航系统**，结合增强现实（AR）与运动传感，主要面向如大学教学楼等结构化室内环境。
 
-## Notes
+Unlike traditional indoor navigation systems that rely on infrastructure (e.g., Bluetooth beacons or Wi-Fi fingerprinting), this system adopts a **trace-based approach**, allowing routes to be recorded once and reused for navigation.
 
-- `GoogleService-Info.plist` is intentionally not included.
-- Each app now has its own AppDelegate class name to avoid collisions:
-  - `ARNavigationAppDelegate`
-  - `RecordRouteAppDelegate`
-- The main root views were renamed to avoid confusion:
-  - `ARNavigationHomeView`
-  - `RecordRouteHomeView`
-- Files were split mainly by feature area to keep logic unchanged as much as possible.
+与依赖蓝牙信标或 Wi-Fi 指纹的传统室内导航不同，本系统采用**轨迹复用（trace-based）方法**，通过一次路线录制即可反复用于导航。
 
-## Recommended Xcode target membership
+---
 
-### AR-Navigation-App target
-Add every `.swift` file inside `AR-Navigation-App/` to the AR navigation target.
+## 🎬 Demo Video | 演示视频
 
-### Record-Route-Database-App target
-Add every `.swift` file inside `Record-Route-Database-App/` to the route-recording/database target.
+Watch the system demo here:  
+https://fyp-indoor-navigation.blogspot.com/2026/03/video.html
 
-## Important
+点击观看系统演示视频：  
+https://fyp-indoor-navigation.blogspot.com/2026/03/video.html
 
-This environment cannot run Xcode/iOS builds, so the refactor was done as a source split and naming cleanup rather than a compiled verification pass.
-Before pushing to GitHub, open the project in Xcode and verify target membership, signing, Firebase plist placement, and Info.plist permissions.
+---
+
+## 🧩 System Architecture | 系统架构
+
+The project consists of **two independent iOS applications**:
+
+本项目由**两个独立的 iOS 应用组成**：
+
+### 1. AR Navigation App
+- End-user navigation interface  
+- QR code-based initialization  
+- AR-based visual guidance  
+- Real-time motion tracking  
+
+用户导航端，包含：
+- 二维码初始化定位  
+- AR 实时导航指引  
+- 运动传感路径重建  
+
+---
+
+### 2. Route Recording & Database App
+- Admin-only interface  
+- Route recording using sensors  
+- Upload data to Firestore  
+- Manage nodes and room mapping  
+
+管理员端，包含：
+- 路径录制（基于传感器）  
+- 上传数据至 Firebase Firestore  
+- 节点与房间信息管理  
+
+---
+
+## ⚙️ Key Features | 核心功能
+
+- Smartphone-based navigation (no external hardware)  
+- Motion-based trajectory reconstruction  
+- Node-based indoor graph representation  
+- Reusable recorded routes  
+- Cloud-based data storage (Firebase Firestore)  
+- Role-based access (Admin vs User)  
+- QR code initialization  
+- AR visual guidance  
+
+---
+
+## 🏗️ Project Structure | 项目结构
+
+/AR-Navigation-App  
+/Record-Route-Database-App  
+
+---
+
+## 🚀 Setup Instructions | 运行说明
+
+### Requirements
+- Xcode
+- iOS device (ARKit supported)
+- Firebase account
+
+### Steps
+
+1. Clone the repository  
+2. Open project in Xcode  
+3. Add your own `GoogleService-Info.plist`  
+4. Enable permissions (Camera, Motion, ARKit)  
+5. Run on real device  
+
+---
+
+## ⚠️ Important Notes | 注意事项
+
+- `GoogleService-Info.plist` is NOT included  
+- Must be configured manually  
+- Ensure correct target membership  
+
+---
+
+## 🔮 Future Work | 后续工作
+
+- Improve motion accuracy (drift reduction)  
+- Cross-platform support  
+- Multi-floor navigation  
+- Automated node generation  
+
+---
+
+## 📄 License | 许可
+
+This project is for academic use only.
+
+本项目仅用于学术用途。
